@@ -1,8 +1,6 @@
 import pybreaker
-import requests
 
-
-class CallListener(pybreaker.CircuitBreakerListener):
+class DefaultAdListener(pybreaker.CircuitBreakerListener):
     "Listener used by circuit breakers that execute database operations."
 
     def before_call(self, cb, func, *args, **kwargs):
@@ -25,21 +23,3 @@ class CallListener(pybreaker.CircuitBreakerListener):
         "Called when a function invocation succeeds."
         print('success')
         pass
-
-
-
-class CallerService:
-    circuit_breaker = pybreaker.CircuitBreaker(
-        fail_max=2,listeners=[CallListener()],
-        reset_timeout=13,
-        )
-
-    @circuit_breaker
-    def requestData(self):
-        print('executing call')
-        response = requests.get("http://127.0.0.1:8000/")
-        print(response.text)
-
-
-
-

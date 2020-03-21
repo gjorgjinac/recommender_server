@@ -11,13 +11,6 @@ def get_product_by_asin(db: Session, asin: str):
 def get_products(db: Session, skip: int = 0, limit: int = None) -> List[models.Product]:
     return db.query(models.Product).offset(skip).limit(limit).all()
 
-def map_schema_to_model(product: schemas.ProductBase):
-    product_model = models.Product()
-    product_model.asin=product.asin
-    product_model.description=product.description
-    product.title=product.title
-
-
 def create_product(db: Session, new_product:any):
     db_product = models.Product(**new_product.to_dict())
     db.add(db_product)
@@ -33,8 +26,8 @@ def get_reviews(db: Session, skip: int = 0, limit: int = None) -> List[models.Re
     return db.query(models.Review).offset(skip).limit(limit).all()
 
 
-def create_review(db: Session, new_review: any):
-    product = get_product_by_asin(db, new_review['asin'])
+def create_review(db: Session, new_review: schemas.ReviewBase) -> models.Review:
+    product = get_product_by_asin(db, new_review.asin)
     db_review = models.Review(**new_review.to_dict(), product_id = product.id )
     db.add(db_review)
     db.commit()

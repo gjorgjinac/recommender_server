@@ -2,7 +2,9 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-SQLALCHEMY_DATABASE_URL = "postgresql://postgres:pg_password123@localhost:5432/recommender_db"
+from .db_creds import user,password,dbname
+
+SQLALCHEMY_DATABASE_URL = "postgresql://{user}:{password}@localhost:5432/{dbname}".format(user=user,password=password,dbname=dbname)
 
 engine = create_engine(
     SQLALCHEMY_DATABASE_URL
