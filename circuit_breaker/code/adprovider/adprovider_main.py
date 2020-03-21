@@ -1,21 +1,13 @@
-
 from typing import List
 
-import pandas as pd
-import pybreaker
 import uvicorn
-from fastapi import Depends, FastAPI
-from numpy import random
-from repository import models, crud, schemas
-from repository.database import SessionLocal, engine
-from repository.models import Review
+from fastapi import FastAPI, Depends
 from sqlalchemy.orm import Session
+from starlette.middleware.cors import CORSMiddleware
 
-from code.recommender.default_ad_listener import DefaultAdListener
+from code.adprovider.repository.database import SessionLocal
 
-models.Base.metadata.create_all(bind=engine)
-
-from fastapi.middleware.cors import CORSMiddleware
+from code.adprovider.repository import schemas, crud
 
 app = FastAPI()
 

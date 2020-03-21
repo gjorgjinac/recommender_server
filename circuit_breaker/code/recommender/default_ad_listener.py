@@ -1,6 +1,6 @@
 import pybreaker
 
-class DefaultAdListener(pybreaker.CircuitBreakerListener):
+class DefaultListener(pybreaker.CircuitBreakerListener):
     "Listener used by circuit breakers that execute database operations."
 
     def before_call(self, cb, func, *args, **kwargs):
