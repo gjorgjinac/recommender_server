@@ -4,11 +4,11 @@ import pandas as pd
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
-from code.recommender.defaults import default_reviews
-from code.recommender.helper import call_protected
-from code.recommender.repository import crud, schemas
-from code.recommender.repository.crud import db_circuit_breaker
-from code.recommender.repository.database import engine, get_db
+from defaults import default_reviews
+from helper import call_protected
+from repository import crud, schemas
+from repository.crud import db_circuit_breaker
+from repository.database import engine, get_db
 
 review_router = APIRouter()
 @review_router.get("/reviews", response_model=List[schemas.Review])

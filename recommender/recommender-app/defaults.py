@@ -1,4 +1,4 @@
-from code.recommender.repository.models import Product, Review
+from repository.models import Product, Review
 
 product1 = Product()
 product1.title='Product1'

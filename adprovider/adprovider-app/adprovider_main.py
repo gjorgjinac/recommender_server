@@ -5,9 +5,9 @@ from fastapi import FastAPI, Depends
 from sqlalchemy.orm import Session
 from starlette.middleware.cors import CORSMiddleware
 
-from code.adprovider.repository.database import SessionLocal
+from repository.database import SessionLocal
 
-from code.adprovider.repository import schemas, crud
+from repository import schemas, crud
 
 app = FastAPI()
 
@@ -39,3 +39,7 @@ def getAds(db: Session = Depends(get_db)):
     some_products = set(crud.get_products(db, skip=skip, limit=1000))
     print(some_products)
     return list(some_products)[0:10]
+
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="127.0.0.1", port=8001)

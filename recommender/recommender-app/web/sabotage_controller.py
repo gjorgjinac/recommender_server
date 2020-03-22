@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 
-from code.recommender.repository import crud
-from code.recommender.web.ad_controller import sabotage_ad
+from repository import crud
+from web.ad_controller import sabotage_ad
 
 sabotage_router = APIRouter()
 

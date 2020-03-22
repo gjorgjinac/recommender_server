@@ -9,7 +9,7 @@ services:
     ports:
       - 9001:8000
     environment:
-      - DATABASE_URI=postgresql://postgres:password@adprovider_db/recommender_db
+      - DATABASE_URI=postgresql://postgres:password@adprovider_db/recommender_database
       - CAST_SERVICE_HOST_URL=http://recommender_service:8000/api/v1/recommenders/
 
   adprovider_db:
@@ -29,7 +29,7 @@ services:
     ports:
       - 9002:8000
     environment:
-      - DATABASE_URI=postgresql://postgres:password@recommender_db/recommender_db
+      - DATABASE_URI=postgresql://postgres:password@recommender_db/recommender_database
 
   recommender_db:
     image: postgres
