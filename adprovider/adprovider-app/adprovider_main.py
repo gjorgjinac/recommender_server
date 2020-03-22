@@ -39,7 +39,3 @@ def getAds(db: Session = Depends(get_db)):
     some_products = set(crud.get_products(db, skip=skip, limit=1000))
     print(some_products)
     return list(some_products)[0:10]
-
-
-if __name__ == "__main__":
-    uvicorn.run(app, host="127.0.0.1", port=8001)

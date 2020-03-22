@@ -1,0 +1,46 @@
+version: '2.2'
+
+services:
+  adprovider:
+    build: ./adprovider
+    command: uvicorn adprovider-app.adprovider_main:app --reload --host 0.0.0.0 --port 8000
+    volumes:
+      - ./adprovider/:/app/
+    ports:
+      - 9001:8000
+    environment:
+      - DATABASE_URI=postgresql://postgres:password@adprovider_db/recommender_db
+      - CAST_SERVICE_HOST_URL=http://recommender_service:8000/api/v1/recommenders/
+
+  adprovider_db:
+    image: postgres
+    volumes:
+      - postgres_data_adprovider:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=recommender_db
+
+  recommender:
+    build: ./recommender
+    command: uvicorn recommender-app.recommender_main:app --reload --host 0.0.0.0 --port 8000
+    volumes:
+      - ./recommender/:/app/
+    ports:
+      - 9002:8000
+    environment:
+      - DATABASE_URI=postgresql://postgres:password@recommender_db/recommender_db
+
+  recommender_db:
+    image: postgres
+    volumes:
+      - postgres_data_recommender:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=recommender_db
+
+
+volumes:
+  postgres_data_adprovider:
+  postgres_data_recommender:
