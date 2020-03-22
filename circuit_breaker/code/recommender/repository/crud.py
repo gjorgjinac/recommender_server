@@ -4,7 +4,6 @@ import pybreaker
 from sqlalchemy.orm import Session
 
 from . import models, schemas
-from ..default_ad_listener import DefaultListener
 
 db_circuit_breaker = pybreaker.CircuitBreaker(
     fail_max=1,

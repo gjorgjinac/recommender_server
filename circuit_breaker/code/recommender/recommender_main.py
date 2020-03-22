@@ -4,10 +4,10 @@ from repository import models
 from repository.database import engine
 from repository.database import get_db
 
-from code.recommender.web.ad_controller import ad_router
-from code.recommender.web.product_controller import product_router
-from code.recommender.web.review_controller import review_router
-from code.recommender.web.sabotage_controller import sabotage_router
+from web.ad_controller import ad_router
+from web.product_controller import product_router
+from web.review_controller import review_router
+from web.sabotage_controller import sabotage_router
 
 models.Base.metadata.create_all(bind=engine)
 

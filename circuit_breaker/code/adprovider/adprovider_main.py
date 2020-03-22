@@ -5,9 +5,9 @@ from fastapi import FastAPI, Depends
 from sqlalchemy.orm import Session
 from starlette.middleware.cors import CORSMiddleware
 
-from code.adprovider.repository.database import SessionLocal
+from repository.database import SessionLocal
 
-from code.adprovider.repository import schemas, crud
+from repository import schemas, crud
 
 app = FastAPI()
 

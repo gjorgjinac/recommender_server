@@ -7,11 +7,11 @@ import requests
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
-from code.recommender.default_ad_listener import DefaultListener
-from code.recommender.defaults import default_ads
-from code.recommender.helper import call_protected
-from code.recommender.repository import crud, schemas
-from code.recommender.repository.database import engine, get_db
+from default_ad_listener import DefaultListener
+from defaults import default_ads
+from helper import call_protected
+from repository import crud, schemas
+from repository.database import engine, get_db
 
 ad_router = APIRouter()
 
