@@ -8,8 +8,5 @@ WORKDIR /recommender
 
 RUN pip3 install -r requirements.txt
 
-COPY . /recommender
+COPY . /recommender/
 
-ENTRYPOINT [ "python" ]
-
-CMD [ "recommender_main.py" ]

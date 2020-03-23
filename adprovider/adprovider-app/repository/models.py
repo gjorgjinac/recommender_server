@@ -1,5 +1,4 @@
-from pydantic import BaseModel
-from sqlalchemy import Boolean, Column, ForeignKey, Integer, String, Float, Text
+from sqlalchemy import Column, ForeignKey, Integer, String, Float, Text
 from sqlalchemy.orm import relationship
 
 from .database import Base

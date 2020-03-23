@@ -1,17 +1,14 @@
 import json
 from typing import List
 
-import pandas as pd
 import pybreaker
 import requests
-from fastapi import APIRouter, Depends
-from sqlalchemy.orm import Session
+from fastapi import APIRouter
 
 from default_ad_listener import DefaultListener
 from defaults import default_ads
 from helper import call_protected
-from repository import crud, schemas
-from repository.database import engine, get_db
+from repository import schemas
 
 ad_router = APIRouter()
 
@@ -31,5 +28,5 @@ def sabotage_ad():
     raise Exception
 
 @ad_router.get("/ads", response_model=List[schemas.Product])
-async def get_ads(db: Session = Depends(get_db)):
+async def get_ads():
     return call_protected(ad_circuit_breaker, default_ads, send_post_for_adds)
