@@ -1,5 +1,5 @@
 ### Intro
-This application is made out of two services, **recommender** and **ad_provider** service. Ad_provider has two circuit breakers: one for the providing ads for the **recommender** service and one for the database, in this case PostgreSQL.
+This application is made out of two services, **recommender** and **ad_provider** service. Recommender has two circuit breakers: one for sending the request to get the ads from the ad provider (placed in ad_controller.py), and one for the database, in this case PostgreSQL (placed in crud.py).
 
 ### Docker setup
 In order to run this project:
