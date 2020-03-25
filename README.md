@@ -13,7 +13,7 @@ This will run the two, beforementioned, services. Verification of the deployment
 0.0.0.0:8000 #for the recommended service
 0.0.0.0:8001 #for the ad_provider service
 ```
-Slika nekoja od docker, bla bla
+![alt text](https://i.imgur.com/y3XiMDg.png)
 ### Configuration
 The configuration on the PyBreaker for the `/ads` breaker which protects calls to `0.0.0.0:8000/ads`.
 ```python
