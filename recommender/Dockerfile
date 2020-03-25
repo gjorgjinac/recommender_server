@@ -10,3 +10,4 @@ RUN pip3 install -r requirements.txt
 
 COPY . /recommender/
 
+CMD uvicorn recommender-app.recommender_main:app --reload --host 0.0.0.0 --port 8000
